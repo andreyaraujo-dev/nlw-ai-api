@@ -1,0 +1,37 @@
+# @name get-prompts
+GET http://localhost:3000/prompts
+
+###
+
+# @name upload-video
+POST http://localhost:3000/videos
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="example.mp3"
+Content-Type: audio/mpeg
+
+< ./example.mp3
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+# @name create-transcriptions
+POST http://localhost:3000/videos/e0bf01bd-6ab9-4abe-b488-745de8ab03c3/transcription
+Content-Type: application/json
+
+{
+  "prompt": "ternal flame, flashback, music"
+}
+
+###
+
+# @name generate-ai-completion
+POST http://localhost:3000/ai/completion
+Content-Type: application/json
+
+{
+  "videoId": "e0bf01bd-6ab9-4abe-b488-745de8ab03c3",
+  "temperature": 0.5,
+  "template": "Gere um resumo sucinto da transcrição do vídeo informado a seguir: '''{transcription}'''",
+}
