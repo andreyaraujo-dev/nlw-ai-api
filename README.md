@@ -64,3 +64,5 @@ Contribuições são sempre bem-vindas!
 Caso queira fazer alguma contribuição, fique a vontade para criar um PR.
 
 ## Licença
+
+[MIT](./LICENSE)
